@@ -51,7 +51,6 @@ const CombinedDataComponent: React.FC<CombinedDataComponentProps> = ({ setFilter
     const [error, setError] = useState<string | null>(null);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-    // Note: Consider a more robust ID generation strategy, especially for production use.
     let counter = 0;
 
     const fetchData = async (url: string, mapper: (data: any) => Items[]) => {
@@ -65,7 +64,7 @@ const CombinedDataComponent: React.FC<CombinedDataComponentProps> = ({ setFilter
             return mapper(data);
         } catch (error: any) {
             setError((prevError) => prevError ? `${prevError}; ${error.message}` : error.message);
-            return []; // Return an empty array in case of error
+            return []; 
         } finally {
             setIsLoading(false);
         }
@@ -106,13 +105,13 @@ const CombinedDataComponent: React.FC<CombinedDataComponentProps> = ({ setFilter
                         address: item.locational_detail,
                         name: item.site_name,
                         description: "Calgary city park.",
-                        coordinates: item.the_geom.coordinates[0][0][0], // Check this mapping
+                        coordinates: item.the_geom.coordinates[0][0][0], 
                     }))
                 );
                 setFilteredItems(parkData);
                 break;
             default:
-                // Optionally clear or maintain the current state
+                
                 console.error('Unknown category:', category);
         }
     };
