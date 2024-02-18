@@ -15,7 +15,13 @@ const cors = require('cors');
 const port = process.env.PORT;
 
 //Middleware
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://calgarycompassbackend.vercel.app/"],
+        methods: ["POST","GET"],
+        credentials: true
+    }
+));
 app.use(express.json());
 
 //Route for user info (login/signup)

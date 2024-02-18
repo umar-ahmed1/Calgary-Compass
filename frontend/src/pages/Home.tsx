@@ -64,9 +64,9 @@ const Home: React.FC<HomeProps> = () => {
         >
           <Typography>
             At Calgary Compass, our vision is to redefine the way you explore
-            the vibrant city of Calgary.
+            the vibrant City of Calgary.
           </Typography>
-          <Box padding={"10px"}>
+          <Box padding={"20px"}>
           </Box>
           <Typography>
             We believe in creating seamless
@@ -74,9 +74,9 @@ const Home: React.FC<HomeProps> = () => {
             to discover the hidden gems and iconic landmarks scattered
             throughout this dynamic urban landscape. Through our innovative
             platform, users gain access to an extensive database featuring
-            parks, heritage sites, monuments, and more. 
+            parks, heritage sites, monuments, and more.
           </Typography>
-          <Box padding={"10px"}>
+          <Box padding={"20px"}>
           </Box>
           <Typography>
             But we don't stop there. Our interactive map functionality allows
@@ -85,7 +85,7 @@ const Home: React.FC<HomeProps> = () => {
             simple to pinpoint your desired destinations and create a
             personalized schedule tailored to your interests and preferences.
           </Typography>
-          <Box padding={"10px"}>
+          <Box padding={"20px"}>
           </Box>
           <Typography>
             Whether you're a first-time visitor eager to discover Calgary's
@@ -99,7 +99,7 @@ const Home: React.FC<HomeProps> = () => {
       <Box
         bgcolor={"secondaryBlueAccent"}
         display={"flex"}
-        flexDirection={"row"} 
+        flexDirection={"row"}
       >
         <Box
           display={"flex"}
@@ -133,18 +133,18 @@ const Home: React.FC<HomeProps> = () => {
             <Typography color={"white"}>
               Calgary Compass is a dedicated group of university students deeply passionate about Calgary. Our mission is simple: to ensure everyone experiences the city to its fullest.
 
-              As locals, we understand Calgary's unique charm and endless possibilities. From its urban streets to tranquil parks, there's something special for every visitor. 
+              As locals, we understand Calgary's unique charm and endless possibilities. From its urban streets to tranquil parks, there's something special for every visitor.
             </Typography>
-            
+
           </Box>
         </Box>
         <Box width={"40%"} height={"auto"} display={"flex"} textAlign={"right"}
-            alignSelf={"center"} paddingRight={"120px"}>
+          alignSelf={"center"} paddingRight={"120px"}>
           <Typography>
-              That's why we've created Calgary Compass – to be your trusted guide, offering insider tips and personalized itineraries for unforgettable adventures.
+            That's why we've created Calgary Compass – to be your trusted guide, offering insider tips and personalized itineraries for unforgettable adventures.
 
-              Join us as we share our love for Calgary and help you uncover its hidden gems. Welcome to Calgary Compass, where exploration knows no bounds.
-            </Typography>
+            Join us as we share our love for Calgary and help you uncover its hidden gems. Welcome to Calgary Compass, where exploration knows no bounds.
+          </Typography>
         </Box>
       </Box>
 

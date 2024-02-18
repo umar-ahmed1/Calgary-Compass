@@ -45,10 +45,34 @@ const MyItinerary: React.FC<MyItineraryProps> = () => {
     fetchData()
   }, [user])
 
+  const fetchData2 = async () => {
+    if (!user) return;
+    try {
+      const response = await fetch(`https://calgarycompassbackend.vercel.app/api/user/getitinerary/${user.id}`);
+      const data = await response.json()
+      if (response.ok) {
+        console.log("ONLINE BACKEND RESPONSE OK", data)
+      } else {
+        console.log("ONLINE BACKEND RESPONSE error", data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  };
+  //fetch itineraries on page load
+  useEffect(() => {
+    fetchData()
+  }, [user])
+
+  //fetch itineraries on page load
+  useEffect(() => {
+    fetchData2()
+  }, [user])
+
   return (
     <>
-      <Box display={"flex"}>
-
+      <Box display={"flex"} flexDirection={"row"} width={"100%"} justifyContent={"center"} pt={"10px"}>
+        <Typography variant={'h4'} fontWeight={"500"}>Saved Itineraries</Typography>
       </Box>
       <Box display={"flex"} flexDirection={"row"}>
         {userItineraries && userItineraries.map((itineraryData: any, index: number) => {
@@ -66,9 +90,12 @@ const MyItinerary: React.FC<MyItineraryProps> = () => {
 
           // Return some JSX elements here
           return (
-            <>
+            <Box display={"flex"} flexDirection={"column"} width={"33vw"} justifyContent={"center"} paddingTop={"5vh"}>
+              <Box textAlign={"center"}>
+                <Typography variant={'h6'} fontWeight={"400"}>{itineraryName}</Typography>
+              </Box>
               <MySchedule selectedItems={rest} />
-            </>
+            </Box>
           );
         })}
       </Box>
@@ -76,23 +103,3 @@ const MyItinerary: React.FC<MyItineraryProps> = () => {
   )
 }
 export default MyItinerary;
-
-/*           // Flatten the itinerary array into an array of items
-          const updatedItems = itinerary.map((item: any) => ({
-            id: item.id,
-            name: item.name,
-            description: item.description,
-            coordinates: item.coordinates,
-            startTime: item.startTime,
-            endTime: item.endTime,
-          })) as Item[]; // Explicitly cast to Item[]
-
-          // Render the Schedule component for each itinerary array
-          return (
-            <Box key={index}>
-              <Typography variant="h6">{itineraryName}</Typography>
-              <Schedule selectedItems={updatedItems} setSelectedItems={setSelectedItems} />
-            </Box>
-          );
-        })}
-      </Box> */
