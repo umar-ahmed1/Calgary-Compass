@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Test from './components/Test';
 import Itinerary from './pages/Itinerary';
 import RecreationData from './components/RecreationData';
-import LoggedInHomePage from './pages/LoggedInHomePage';
 import MyItinerary from './pages/MyItinerary';
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
@@ -25,7 +24,6 @@ function App() {
         </Route>
         <Route path = '/login' element = {<Login />}></Route>
         <Route path = '/signup' element = {<SignUp />}></Route>
-        <Route path='/LoggedInHomePage' element={<LoggedInHomePage />}></Route>
       </Routes>
       
     </BrowserRouter>

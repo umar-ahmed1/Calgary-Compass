@@ -71,8 +71,8 @@ const MyItinerary: React.FC<MyItineraryProps> = () => {
 
   return (
     <>
-      <Box display={"flex"} flexDirection={"row"} width={"100%"} justifyContent={"center"} pt={"10px"}>
-        <Typography variant={'h4'} fontWeight={"500"}>Saved Itineraries</Typography>
+      <Box display={"flex"} flexDirection={"row"} width={"100%"} justifyContent={"center"} pt={"10px"} pb={"10px"}>
+        <Typography variant={'h4'} fontWeight={"600"} color={"blueSecondaryAccent"}>Saved Itineraries</Typography>
       </Box>
       <Box display={"flex"} flexDirection={"row"}>
         {userItineraries && userItineraries.map((itineraryData: any, index: number) => {
@@ -81,7 +81,7 @@ const MyItinerary: React.FC<MyItineraryProps> = () => {
 
           // Return some JSX elements here
           return (
-            <Box display={"flex"} flexDirection={"column"} width={"33vw"} justifyContent={"center"} paddingTop={"5vh"}>
+            <Box display={"flex"} flexDirection={"column"} width={"33.33333333333vw"} justifyContent={"start"} height="75vh">
               <Box textAlign={"center"}>
                 <Typography variant={'h6'} fontWeight={"400"}>{itineraryName}</Typography>
               </Box>

@@ -58,6 +58,7 @@ const Itinerary: React.FC<ItineraryProps> = () => {
         setLoading(true)
         if (selectedItems.length === 0) {
             setSavingError("Itinerary must not be empty")
+            setLoading(false)
             return;
         }
         //send a POST request to the api
