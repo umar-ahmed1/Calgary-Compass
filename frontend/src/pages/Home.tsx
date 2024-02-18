@@ -26,7 +26,7 @@ const Home: React.FC<HomeProps> = () => {
           </Typography>
         </Box>
       </Box>
-      <Box display={"flex"} flexDirection={"row"} height={"100vh"}>
+      <Box display={"flex"} flexDirection={"row"} height={"100vh"} bgcolor={"secondaryBlueAccent"}>
         <Box
           paddingTop="25px"
           display={"flex"}
