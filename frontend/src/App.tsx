@@ -6,6 +6,8 @@ import SignUp from './pages/SignUp'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Test from './components/Test';
 import Itinerary from './pages/Itinerary';
+import RecreationData from './components/RecreationData';
+import LoggedInHomePage from './pages/LoggedInHomePage';
 
 function App() {
   return (
@@ -14,10 +16,12 @@ function App() {
         <Route element = {<Header />}>
           <Route path = '/' element = {<Home />}></Route>
           <Route path = '/test' element = {<Test/>}></Route>
+          <Route path = '/Itinerary' element={<Itinerary/>}></Route>
         </Route>
         <Route path = '/Login' element = {<Login />}></Route>
         <Route path = '/SignUp' element = {<SignUp />}></Route>
-        <Route path = '/Itinerary' element={<Itinerary/>}></Route>
+        <Route path='/RecreationData' element={<RecreationData />}></Route>
+        <Route path='/LoggedInHomePage' element={<LoggedInHomePage />}></Route>
       </Routes>
       
     </BrowserRouter>

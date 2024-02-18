@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" sx={{height:"12vh"}}>
         <Box
           display={"flex"}
           flexDirection={"row"}
@@ -46,7 +46,7 @@ export default function Header() {
             width={"50%"}
             paddingLeft={"50px"}
           >
-            <Box maxHeight={"80px"}>
+            <Box maxHeight={"7vh"}>
               <img src={Logo} alt="Logo" style={{ width: "100%", height: "100%" }}  />
             </Box>
           </Box>
@@ -70,6 +70,13 @@ export default function Header() {
               <Box>
                 <Button variant="contained" color={"secondary"} fullWidth onClick={() => navigate('./login')}>
                   <Typography>Log In</Typography>
+                </Button>
+              </Box>
+            )}
+            {user && (
+              <Box paddingRight={"15px"} >
+                <Button variant="outlined" onClick={() => navigate('./itinerary')}>
+                    <Typography color="white">Your Itinerary</Typography>
                 </Button>
               </Box>
             )}

@@ -7,21 +7,27 @@ const Home: React.FC<HomeProps> = () => {
   return (
     <>
       <Box
-      // sx={{
-      //   backgroundImage:
-      //     "url('https://cdn.britannica.com/60/137760-050-9EFAB73A/Calgary-foreground-Pengrowth-Saddledome-Canada-Alberta.jpg')",
-      //   backgroundRepeat: "no-repeat",
-      //   width: "100%",
-      //   height: "auto",
-      // }}
+        sx={{
+          backgroundImage:
+            "url('https://cdn.britannica.com/60/137760-050-9EFAB73A/Calgary-foreground-Pengrowth-Saddledome-Canada-Alberta.jpg')",
+          backgroundRepeat: "no-repeat",
+          width: "100%",
+          height: "auto",
+        }}
+        alignItems={"center"}
+        flexWrap={"wrap"}
       >
-        <Box width={"500px"}></Box>
-        <img
+        <Box paddingTop={"40px"} height={"300px"}>
+          <Typography variant="h5" textAlign={"center"}>
+            Discover New Possibilities
+          </Typography>
+        </Box>
+        {/* <img
           src="https://cdn.britannica.com/60/137760-050-9EFAB73A/Calgary-foreground-Pengrowth-Saddledome-Canada-Alberta.jpg"
           alt="City Image"
           width="100%"
           height="auto"
-        />
+        /> */}
       </Box>
       <Box
         paddingTop="25px"
@@ -29,11 +35,17 @@ const Home: React.FC<HomeProps> = () => {
         flexDirection={"column"}
         justifyContent={"center"}
         alignItems={"center"}
+        sx={{
+          backgroundImage: "url('https://heritagepark.ca/wp-content/uploads/2023/03/Crowd_Plaza_peoplewandering-2048x1365.jpg')",
+          backgroundRepeat: "no-repeat",
+          width: "100%",
+          height: "auto",
+          objectFit: "cover"
+        }}
       >
         <Typography
-          variant="h4"
+          variant="h5"
           textAlign={"center"}
-          sx={{ textDecoration: "underline" }}
         >
           Our Vision
         </Typography>
@@ -42,7 +54,8 @@ const Home: React.FC<HomeProps> = () => {
           width={"60%"}
           textAlign={"center"}
           justifyContent={"center"}
-          paddingTop={"20px"}
+          paddingTop={"40px"}
+          paddingBottom={"40px"}
         >
           <Typography>
             At Calgary Compass, our vision is to redefine the way you explore
@@ -89,9 +102,33 @@ const Home: React.FC<HomeProps> = () => {
           textAlign={"center"}
           justifyContent={"center"}
           paddingTop={"20px"}
+          paddingBottom={"20px"}
         >
           <Typography>
-            
+            Calgary Compass is a dedicated group of university students deeply passionate about Calgary. Our mission is simple: to ensure everyone experiences the city to its fullest.
+
+            As locals, we understand Calgary's unique charm and endless possibilities. From its urban streets to tranquil parks, there's something special for every visitor. That's why we've created Calgary Compass – to be your trusted guide, offering insider tips and personalized itineraries for unforgettable adventures.
+
+            Join us as we share our love for Calgary and help you uncover its hidden gems. Welcome to Calgary Compass, where exploration knows no bounds.
+          </Typography>
+        </Box>
+      </Box>
+      <Box
+        display={"flex"}
+        flexDirection={"row"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        sx={{ borderTop: 1 }}
+        padding={"20px"}
+      >
+        <Box justifyContent={"left"} width={"50%"}>
+          <Typography textAlign={"left"}>
+            Calgary Compass © All Rights Reserved® 2024
+          </Typography>
+        </Box>
+        <Box justifyContent={"right"} textAlign={"right"} width={"50%"}>
+          <Typography>
+            Contact Us
           </Typography>
         </Box>
       </Box>
