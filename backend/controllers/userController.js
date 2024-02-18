@@ -48,10 +48,14 @@ const getUserItineraries = async (req,res) => {
 
     if (!user) {
       throw new Error("User not found");
-    }    
+    } 
+    
+    const userItinerary = user.itinerary
+    const lastThreeItineraries = userItinerary.slice(-3);
+
     // Return the user's itineraries
-    res.status(200).json({itinerary:user.itinerary});
-    return user.itinerary;
+    res.status(200).json({itinerary:lastThreeItineraries});
+    return lastThreeItineraries;
   } catch (error) {
     res.status(400).json({ error: error.message });
     throw new Error("Error fetching user itineraries: " + error.message);

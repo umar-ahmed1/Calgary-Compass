@@ -34,20 +34,16 @@ export default function MySchedule({ selectedItems }) {
       start: new Date(2024, today.getMonth(), today.getDate(), item.startTime, 0),
       end: new Date(2024, today.getMonth(), today.getDate(), item.endTime, 0),
     }));
-    console.log("new events",newEvents)
     setEvents(newEvents);
   }, [selectedItems]);
 
 
   return (
-    <Box>
-    <
     <Box
       width="100%"
       height="100%"
     >
       <MyCalendar events={events} />
     </Box>
-
   )
 }
