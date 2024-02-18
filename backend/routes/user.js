@@ -18,7 +18,7 @@ router.post('/login', loginUser);
 //signup routees
 router.post('/signup',signupUser)
 
-router.get('/getitinerary:userId',getUserItineraries)
+router.get('/getitinerary/:userId',getUserItineraries)
 
 router.post('/setitinerary',addItineraryUser)
 

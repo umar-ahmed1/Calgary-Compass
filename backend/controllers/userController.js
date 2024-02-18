@@ -39,15 +39,18 @@ const signupUser = async (req, res) => {
 const getUserItineraries = async (req,res) => {
   const {userId} = req.params;
   try {
-    // Find the user by their ID
-    const id = new mongoose.Types.ObjectId(userId);
-    const user = await User.findById(id);
-    if (!user) {
-      throw new Error("User not found");
+
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(404).json({ error: "The user does not exist" });
     }
     
+    const user = await User.findById(userId);
+
+    if (!user) {
+      throw new Error("User not found");
+    }    
     // Return the user's itineraries
-    res.status(200).json({ id: user._id});
+    res.status(200).json({itinerary:user.itinerary});
     return user.itinerary;
   } catch (error) {
     res.status(400).json({ error: error.message });

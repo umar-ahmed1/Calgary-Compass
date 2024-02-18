@@ -20,8 +20,8 @@ function App() {
         <Route element = {<Header />}>
           <Route path = '/' element = {<Home />}></Route>
           <Route path = '/test' element = {<Test/>}></Route>
-          <Route path = '/itinerary' element={!user ? <Login /> : <Itinerary/>}></Route>
-          <Route path = '/myitinerary' element={!user ? <Login /> : <MyItinerary/>}></Route>
+          <Route path = '/itinerary' element={!localStorage.getItem('user') ? <Login /> : <Itinerary/>}></Route>
+          <Route path = '/myitinerary' element={!localStorage.getItem('user') ? <Login /> : <MyItinerary/>}></Route>
         </Route>
         <Route path = '/login' element = {<Login />}></Route>
         <Route path = '/signup' element = {<SignUp />}></Route>

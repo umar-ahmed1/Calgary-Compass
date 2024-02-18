@@ -228,11 +228,11 @@ const SignUp: React.FC<SignUpProps> = () => {
           </Typography>
         )}
       </FormControl>
-      <Box sx={{ display: "flex" }} justifyContent={"flex-end"} flexDirection={"column"}>
+      <Box sx={{ display: "flex" }} justifyContent={"flex-end"} flexDirection={"column"} pt={"20px"}>
         <Button
           onClick={(e) => submitForm(e)}
           variant="contained"
-          sx={{ width: "100%" }}
+          sx={{ width: "80%", alignSelf: "center" }}
         >
           Sign Up
         </Button>
@@ -242,6 +242,7 @@ const SignUp: React.FC<SignUpProps> = () => {
               color: "error.main",
               FontSize: "90px",
             }}
+            pt={"10px"}
           >
             {submissionError}
           </Typography>
@@ -252,6 +253,7 @@ const SignUp: React.FC<SignUpProps> = () => {
               color: "error.main",
               FontSize: "90px",
             }}
+            pt={"5px"}
           >
             {error}
           </Typography>
