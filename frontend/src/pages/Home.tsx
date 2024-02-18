@@ -26,7 +26,7 @@ const Home: React.FC<HomeProps> = () => {
           </Typography>
         </Box>
       </Box>
-      <Box display={"flex"} flexDirection={"row"} height={"100vh"} bgcolor={"secondaryBlueAccent"}>
+      <Box display={"flex"} flexDirection={"row"} height={"100vh"}>
         <Box
           paddingTop="25px"
           display={"flex"}
@@ -36,7 +36,7 @@ const Home: React.FC<HomeProps> = () => {
           sx={{
             backgroundImage: "url('https://heritagepark.ca/wp-content/uploads/2023/03/Crowd_Plaza_peoplewandering-2048x1365.jpg')",
             backgroundRepeat: "no-repeat",
-            width: "76%",
+            width: "86%",
             backgroundPosition: "center",
             clipPath: "polygon(0 0, 80% 0, 100% 100%, 0% 100%)",
           }}
@@ -47,7 +47,7 @@ const Home: React.FC<HomeProps> = () => {
           fontWeight="700"
           position="relative"
           top={"20px"}
-          right="50px"
+          right="80px"
           noWrap
           width={"25%"}
         >
@@ -61,6 +61,9 @@ const Home: React.FC<HomeProps> = () => {
           paddingTop={"60px"}
           paddingBottom={"40px"}
           paddingRight={"20px"}
+          position={"relative"}
+          right={"30px"}
+          top={"30px"}
         >
           <Typography>
             At Calgary Compass, our vision is to redefine the way you explore
@@ -110,7 +113,7 @@ const Home: React.FC<HomeProps> = () => {
           width={"60%"}
           height={"100vh"}
           sx={{
-            clipPath: "polygon(0 0, 100% 0, 67% 100%, 0% 100%)",
+            clipPath: "polygon(0 0, 100% 0, 70% 100%, 0% 100%)",
           }}
           paddingRight={"50px"}
         >
@@ -118,7 +121,10 @@ const Home: React.FC<HomeProps> = () => {
             variant="h4"
             textAlign={"center"}
             color={"white"}
-            paddingBottom={"10px"}
+            paddingBottom={"30px"}
+            fontWeight={"600"}
+            position={"relative"}
+            top={"-30px"}
           >
             About Us
           </Typography>
@@ -129,6 +135,8 @@ const Home: React.FC<HomeProps> = () => {
             justifyContent={"center"}
             paddingBottom={"20px"}
             paddingRight={"20px"}
+            position={"relative"}
+            top={"-30px"}
           >
             <Typography color={"white"}>
               Calgary Compass is a dedicated group of university students deeply passionate about Calgary. Our mission is simple: to ensure everyone experiences the city to its fullest.
@@ -138,7 +146,7 @@ const Home: React.FC<HomeProps> = () => {
 
           </Box>
         </Box>
-        <Box width={"40%"} height={"auto"} display={"flex"} textAlign={"right"}
+        <Box width={"40%"} height={"auto"} display={"flex"} textAlign={"justify"}
           alignSelf={"center"} paddingRight={"120px"}>
           <Typography>
             That's why we've created Calgary Compass – to be your trusted guide, offering insider tips and personalized itineraries for unforgettable adventures.

@@ -18,7 +18,7 @@ export const useLogin = () => {
         //object for userdetails to send to api
         const userDetails = {email,password};
         //call the api
-        const response = await fetch('http://localhost:4000/api/user/login', {
+        const response = await fetch('calgarycompassbackend.vercel.app/api/user/login', {
             method: 'POST',
             body: JSON.stringify(userDetails),
             headers: {
