@@ -73,26 +73,23 @@ const MyItinerary: React.FC<MyItineraryProps> = () => {
     <>
       <Box display={"flex"} flexDirection={"row"} width={"100%"} justifyContent={"center"} pt={"10px"}>
         <Typography variant={'h4'} fontWeight={"500"}>Saved Itineraries</Typography>
-        <Box display={"flex"} flexDirection={"row"} width={"100%"} justifyContent={"center"} pt={"10px"}>
-          <Typography variant={'h4'} fontWeight={"500"}>Saved Itineraries</Typography>
-        </Box>
-        <Box display={"flex"} flexDirection={"row"}>
-          {userItineraries && userItineraries.map((itineraryData: any, index: number) => {
-            // Extract itineraryName and itinerary array from itineraryData
-            const { itineraryName, ...rest } = itineraryData;
+      </Box>
+      <Box display={"flex"} flexDirection={"row"}>
+        {userItineraries && userItineraries.map((itineraryData: any, index: number) => {
+          // Extract itineraryName and itinerary array from itineraryData
+          const { itineraryName, ...rest } = itineraryData;
 
-            // Return some JSX elements here
-            return (
-              <Box display={"flex"} flexDirection={"column"} width={"33vw"} justifyContent={"center"} paddingTop={"5vh"}>
-                <Box textAlign={"center"}>
-                  <Typography variant={'h6'} fontWeight={"400"}>{itineraryName}</Typography>
-                </Box>
-                <MySchedule selectedItems={rest} />
+          // Return some JSX elements here
+          return (
+            <Box display={"flex"} flexDirection={"column"} width={"33vw"} justifyContent={"center"} paddingTop={"5vh"}>
+              <Box textAlign={"center"}>
+                <Typography variant={'h6'} fontWeight={"400"}>{itineraryName}</Typography>
               </Box>
+              <MySchedule selectedItems={rest} />
+            </Box>
 
-            );
-          })}
-        </Box>
+          );
+        })}
       </Box>
     </>
   )

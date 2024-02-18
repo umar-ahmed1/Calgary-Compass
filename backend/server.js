@@ -17,7 +17,7 @@ const port = process.env.PORT;
 //Middleware
 app.use(cors(
     {
-        origin: ["calgarycompassfrontend.vercel.app/"],
+        origin: ["calgarycompassfrontend.vercel.app","localhost:3000"],
         methods: ["POST","GET"],
         credentials: true
     }
