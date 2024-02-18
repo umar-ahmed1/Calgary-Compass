@@ -8,13 +8,21 @@ const requireAuth = require("../middleware/requireAuth");
 const {
     signupUser,
     loginUser,
+    getUserItineraries,
+    addItineraryUser
 } = require('../controllers/userController');
 
 // login route
 router.post('/login', loginUser);
 
-//signup route
+//signup routees
 router.post('/signup',signupUser)
+
+router.get('/getitinerary',getUserItineraries)
+
+router.post('/setitinerary',addItineraryUser)
+
+
 
 
 

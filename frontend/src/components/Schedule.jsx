@@ -40,11 +40,11 @@ export default function Schedule({selectedItems,setSelectedItems}) {
     const onSelectEvent = (calEvent) => {
         const r = window.confirm("Would you like to remove this event?")
         if(r === false) return;
-        const updatedEvents = events.filter(event => (
-            !(event.title === calEvent.title && event.start === calEvent.start && event.end === calEvent.end)
+        const updatedSelectedItems = selectedItems.filter(item => (
+            !(item.name === calEvent.title)
         ));
 
-        setEvents(updatedEvents)
+        setSelectedItems(updatedSelectedItems)
 
     }
 

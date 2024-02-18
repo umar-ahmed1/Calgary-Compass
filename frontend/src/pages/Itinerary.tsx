@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Map from '../components/Map';
-import { Box, Checkbox, List, ListItem, ListItemText } from '@mui/material';
-import jsonData from '../components/Public Art_20240217.json';
+import { Box, Checkbox, List, ListItem, ListItemText,Button } from '@mui/material';
 import Schedule from '../components/Schedule';
 import ItineraryItem from '../components/ItineraryItem';
 import RecreationData from '../components/RecreationData';
+import { useAuthContext } from '../hooks/useAuthContext';
 type ItineraryProps = {
 
 };
@@ -29,6 +29,33 @@ interface Items {
 const Itinerary: React.FC<ItineraryProps> = () => {
     const [selectedItems, setSelectedItems] = useState<Item[]>([]);
     const [filteredItems, setFilteredItems] = useState<Items[]>([]);
+    const {user} = useAuthContext();
+
+    const handleSave = async () => {
+        const id = user.id
+        console.log(id)
+        //send a POST request to the api
+        const response = await fetch("http://localhost:4000/api/user/setitinerary", {
+        method: "POST",
+        body: JSON.stringify({ userId: user.id, userItinerary: selectedItems }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      if (response.ok){
+          console.log("success: ", response)
+      } else{
+          console.log("error: ", response)
+      }
+
+
+    }
+
+
+    React.useEffect(() => {
+        console.log(selectedItems)
+    },[selectedItems])
 
     return (
         <Box width="100%" height="88vh" display="flex">
@@ -56,7 +83,14 @@ const Itinerary: React.FC<ItineraryProps> = () => {
 
                 </Box>
             </Box>
-            <Box width="30%" height="100%">
+            <Box width="30%" height="100%" position="relative">
+                    <Button 
+                    sx={{position:"absolute",top:"1px",left:"1px"}} 
+                    variant="contained"
+                    onClick = {handleSave}
+                    >
+                        Save Itinerary
+                    </Button>
                 <Schedule selectedItems={selectedItems} setSelectedItems={setSelectedItems} />
             </Box>
             <Box width="40%" height="100%">

@@ -8,11 +8,12 @@ import Test from './components/Test';
 import Itinerary from './pages/Itinerary';
 import RecreationData from './components/RecreationData';
 import LoggedInHomePage from './pages/LoggedInHomePage';
+import MyItinerary from './pages/MyItinerary';
 
+window.Buffer = window.Buffer || require("buffer").Buffer;
 function App() {
 
   const user = localStorage.getItem('user');
-
 
   return (
     <BrowserRouter>
@@ -20,10 +21,11 @@ function App() {
         <Route element = {<Header />}>
           <Route path = '/' element = {<Home />}></Route>
           <Route path = '/test' element = {<Test/>}></Route>
-          <Route path = '/Itinerary' element={!user ? <Login /> : <Itinerary/>}></Route>
+          <Route path = '/itinerary' element={!user ? <Login /> : <Itinerary/>}></Route>
+          <Route path = '/myitinerary' element={!user ? <Login /> : <MyItinerary/>}></Route>
         </Route>
-        <Route path = '/Login' element = {<Login />}></Route>
-        <Route path = '/SignUp' element = {<SignUp />}></Route>
+        <Route path = '/login' element = {<Login />}></Route>
+        <Route path = '/signup' element = {<SignUp />}></Route>
         <Route path='/LoggedInHomePage' element={<LoggedInHomePage />}></Route>
       </Routes>
       

@@ -35,8 +35,51 @@ const signupUser = async (req, res) => {
   }
 };
 
+// Function to get a user's itineraries
+const getUserItineraries = async (req,res) => {
+  const {userId} = req.body;
+  try {
+    // Find the user by their ID
+    const user = await User.findById(userId);
+    if (!user) {
+      throw new Error("User not found");
+    }
+    
+    // Return the user's itineraries
+    res.status(200).json({ id: user._id, email, token });
+    return user.itinerary;
+  } catch (error) {
+    throw new Error("Error fetching user itineraries: " + error.message);
+  }
+};
+
+// Function to append an itinerary to user's itineraries
+const addItineraryUser = async (req,res) => {
+  const {userId,userItinerary} = req.body;
+  console.log(userId)
+  try {
+    // Find the user by their ID
+    const user = await User.findById(userId);
+    if (!user) {
+      throw new Error("User not found");
+    }
+    
+    // Append the new itinerary to the user's itineraries array
+    user.itinerary.push(userItinerary);
+    await user.save();
+    
+    // Return the updated user object with the appended itinerary
+    return user;
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+    throw new Error("Error appending itinerary to user: " + error.message);
+  }
+};
+
 // Export Functions
 module.exports = {
   loginUser,
   signupUser,
+  getUserItineraries,
+  addItineraryUser
 };

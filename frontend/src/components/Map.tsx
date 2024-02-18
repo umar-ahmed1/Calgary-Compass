@@ -1,6 +1,5 @@
 import React from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import jsonData from './test.json';
 import { Box } from '@mui/material';
 
 interface Item {
@@ -37,6 +36,7 @@ const Map:React.FC<MapProps> = ({selectedItems}) => {
     const [map, setMap] = React.useState(null)
     const onLoad = React.useCallback(function callback(map:any) {
         // Iterate through JSON data and add markers
+        setMap(null);
         selectedItems.forEach((item, index) => {
             const markerPosition = { lat: item.coordinates[1], lng: item.coordinates[0]};
             const marker = new window.google.maps.Marker({
@@ -44,8 +44,6 @@ const Map:React.FC<MapProps> = ({selectedItems}) => {
                 map: map,
                 title: `Marker ${index + 1}`, // Optional: Assign a title based on index
             });
-
-            console.log(marker)
 
             const infoWindow = new window.google.maps.InfoWindow({
                 content: `

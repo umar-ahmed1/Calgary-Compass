@@ -21,9 +21,17 @@ interface ParkSites {
     id: string;
     address: string;
     name: string;
-    coordinates: number[];
     description: string;
+    coordinates: number[];
 }
+
+// interface DogPark {
+//     id: string;
+//     address: string;
+//     name: string;
+//     description: string;
+//     coordinates: number[];
+// }
 
 interface Items {
     id: string;
@@ -33,6 +41,7 @@ interface Items {
     coordinates: number[];
 }
 
+
 type CombinedDataComponentProps = {
     setFilteredItems: React.Dispatch<React.SetStateAction<Items[]>>;
 }
@@ -40,6 +49,7 @@ type CombinedDataComponentProps = {
 const CombinedDataComponent: React.FC<CombinedDataComponentProps> = ({ setFilteredItems }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
     // Note: Consider a more robust ID generation strategy, especially for production use.
     let counter = 0;
@@ -62,6 +72,7 @@ const CombinedDataComponent: React.FC<CombinedDataComponentProps> = ({ setFilter
     };
 
     const handleButtonClick = async (category: string) => {
+        setSelectedCategory(category);
         switch (category) {
             case 'Public Art':
                 const artworkData = await fetchData('https://data.calgary.ca/resource/2kp2-hsy7.json', (data) =>
@@ -69,8 +80,8 @@ const CombinedDataComponent: React.FC<CombinedDataComponentProps> = ({ setFilter
                         id: `art-${counter++}`,
                         address: item.address,
                         name: item.title,
-                        description: item.DESC1,
-                        coordinates: [item.point.coordinates[1], item.point.coordinates[0]], // Assuming [lat, lng]
+                        description: item.short_desc,
+                        coordinates: [item.point.coordinates[0], item.point.coordinates[1]], // Assuming [lat, lng]
                     }))
                 );
                 setFilteredItems(artworkData);
@@ -82,18 +93,19 @@ const CombinedDataComponent: React.FC<CombinedDataComponentProps> = ({ setFilter
                         address: item.address,
                         name: item.name,
                         description: item.significance_summ,
-                        coordinates: [item.point.coordinates[1], item.point.coordinates[0]], // Assuming [lat, lng]
+                        coordinates: [item.point.coordinates[0], item.point.coordinates[1]], // Assuming [lat, lng]
                     }))
                 );
                 setFilteredItems(historicData);
                 break;
+
             case 'Park Sites':
                 const parkData = await fetchData('https://data.calgary.ca/resource/kami-qbfh.json', (data) =>
                     data.map((item: any) => ({
                         id: `park-${counter++}`,
                         address: item.locational_detail,
                         name: item.site_name,
-                        description: item.planning_category,
+                        description: "Calgary city park.",
                         coordinates: item.the_geom.coordinates[0][0][0], // Check this mapping
                     }))
                 );
@@ -110,7 +122,7 @@ const CombinedDataComponent: React.FC<CombinedDataComponentProps> = ({ setFilter
             {['Public Art', 'Historic Resources', 'Park Sites'].map((category) => (
                 <Button
                     key={category}
-                    variant='outlined'
+                    variant={selectedCategory === category ? 'contained' : 'outlined'} 
                     onClick={() => handleButtonClick(category)}
                     style={{margin: '0 5px'}}
                 >

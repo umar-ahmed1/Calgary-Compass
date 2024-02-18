@@ -25,6 +25,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  itinerary: {
+    type: Array,
+    required: false,
+  }
 });
 
 //static method to aid with signing up a user instead of doing everything in the controller
