@@ -1,4 +1,4 @@
-import { Box, Card, CardActionArea, Typography } from '@mui/material';
+import { Box, Card, CardActionArea, Grid, Typography } from '@mui/material';
 import React from 'react';
 
 type LoggedInHomePageProps = {
@@ -52,6 +52,11 @@ const LoggedInHomePage: React.FC<LoggedInHomePageProps> = () => {
 
     return (
         <>
+            <Grid item xs={1}>
+                <PublicArtCard title={"Frozen River"} author={"Stephen Glassman"} address={"Emergency Operations Centre (673 First St. N.E.)"} description={"In suspended motion, like a Frozen River, this sculpture responds to Calgary's dramatic and varied landscape."} />
+                <PublicArtCard title={"Frozen River"} author={"Stephen Glassman"} address={"Emergency Operations Centre (673 First St. N.E.)"} description={"In suspended motion, like a Frozen River, this sculpture responds to Calgary's dramatic and varied landscape."} />
+                <PublicArtCard title={"Frozen River"} author={"Stephen Glassman"} address={"Emergency Operations Centre (673 First St. N.E.)"} description={"In suspended motion, like a Frozen River, this sculpture responds to Calgary's dramatic and varied landscape."} />
+            </Grid>
             <Box>
                 <PublicArtCard title={"Frozen River"} author={"Stephen Glassman"} address={"Emergency Operations Centre (673 First St. N.E.)"} description={"In suspended motion, like a Frozen River, this sculpture responds to Calgary's dramatic and varied landscape."} />
             </Box>

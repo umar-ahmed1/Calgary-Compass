@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Logo from "../public/Logo.png";
 import React from "react";
+import { relative } from "path";
 type HomeProps = {};
 
 const Home: React.FC<HomeProps> = () => {
@@ -12,40 +13,41 @@ const Home: React.FC<HomeProps> = () => {
             "url('https://cdn.britannica.com/60/137760-050-9EFAB73A/Calgary-foreground-Pengrowth-Saddledome-Canada-Alberta.jpg')",
           backgroundRepeat: "no-repeat",
           width: "100%",
-          height: "auto",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
         }}
         alignItems={"center"}
-        flexWrap={"wrap"}
       >
-        <Box paddingTop={"40px"} height={"300px"}>
-          <Typography variant="h5" textAlign={"center"}>
-            Discover New Possibilities
+        <Box paddingTop={"20px"} width={"70vw"} height={"100px"} bgcolor={"rgba(0, 0, 0, 0.4)"} borderRadius={"20px"}>
+          <Typography variant="h2" textAlign={"center"} color={"white"} fontWeight={900}>
+            EXPLORE LANDS UNBREACHED
           </Typography>
         </Box>
-        {/* <img
-          src="https://cdn.britannica.com/60/137760-050-9EFAB73A/Calgary-foreground-Pengrowth-Saddledome-Canada-Alberta.jpg"
-          alt="City Image"
-          width="100%"
-          height="auto"
-        /> */}
       </Box>
-      <Box
-        paddingTop="25px"
-        display={"flex"}
-        flexDirection={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        sx={{
-          backgroundImage: "url('https://heritagepark.ca/wp-content/uploads/2023/03/Crowd_Plaza_peoplewandering-2048x1365.jpg')",
-          backgroundRepeat: "no-repeat",
-          width: "100%",
-          height: "auto",
-          objectFit: "cover"
-        }}
-      >
+      <Box display={"flex"} flexDirection={"row"}>
+        <Box
+          paddingTop="25px"
+          display={"flex"}
+          flexDirection={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          sx={{
+            backgroundImage: "url('https://heritagepark.ca/wp-content/uploads/2023/03/Crowd_Plaza_peoplewandering-2048x1365.jpg')",
+            backgroundRepeat: "no-repeat",
+            width: "76%",
+            backgroundPosition: "center",
+            clipPath: "polygon(0 0, 80% 0, 100% 100%, 0% 100%)",
+          }}
+        ></Box>
         <Typography
-          variant="h5"
-          textAlign={"center"}
+          variant="h4"
+          alignSelf={"left"}
+          fontWeight="700"
+          position="relative"
+          right="80px"
+          noWrap
+          width={"20%"}
         >
           Our Vision
         </Typography>
@@ -64,8 +66,7 @@ const Home: React.FC<HomeProps> = () => {
             to discover the hidden gems and iconic landmarks scattered
             throughout this dynamic urban landscape. Through our innovative
             platform, users gain access to an extensive database featuring
-            parks, dog parks, heritage sites, monuments, playgrounds, public
-            benches, and more. Whether you're seeking a tranquil spot to unwind
+            parks, heritage sites, monuments, and more. Whether you're seeking a tranquil spot to unwind
             amidst nature's beauty or eager to uncover the rich history woven
             into Calgary's streets, our comprehensive listings have you covered.
             But we don't stop there. Our interactive map functionality allows
@@ -83,36 +84,44 @@ const Home: React.FC<HomeProps> = () => {
           </Typography>
         </Box>
       </Box>
+
       <Box
-        paddingTop="25px"
-        display={"flex"}
-        flexDirection={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
+      bgcolor={"secondaryBlueAccent"}
+      display={"flex"}
+      flexDirection={"row"}
       >
-        <Typography
-          variant="h4"
-          textAlign={"center"}
-        >
-          About Us
-        </Typography>
         <Box
           display={"flex"}
-          width={"60%"}
-          textAlign={"center"}
+          flexDirection={"column"}
           justifyContent={"center"}
-          paddingTop={"20px"}
-          paddingBottom={"20px"}
+          alignItems={"center"}
+          bgcolor={"secondaryBlue"}
         >
-          <Typography>
-            Calgary Compass is a dedicated group of university students deeply passionate about Calgary. Our mission is simple: to ensure everyone experiences the city to its fullest.
-
-            As locals, we understand Calgary's unique charm and endless possibilities. From its urban streets to tranquil parks, there's something special for every visitor. That's why we've created Calgary Compass – to be your trusted guide, offering insider tips and personalized itineraries for unforgettable adventures.
-
-            Join us as we share our love for Calgary and help you uncover its hidden gems. Welcome to Calgary Compass, where exploration knows no bounds.
+          <Typography
+            variant="h4"
+            textAlign={"center"}
+          >
+            About Us
           </Typography>
+          <Box
+            display={"flex"}
+            width={"60%"}
+            textAlign={"center"}
+            justifyContent={"center"}
+            paddingTop={"20px"}
+            paddingBottom={"20px"}
+          >
+            <Typography>
+              Calgary Compass is a dedicated group of university students deeply passionate about Calgary. Our mission is simple: to ensure everyone experiences the city to its fullest.
+
+              As locals, we understand Calgary's unique charm and endless possibilities. From its urban streets to tranquil parks, there's something special for every visitor. That's why we've created Calgary Compass – to be your trusted guide, offering insider tips and personalized itineraries for unforgettable adventures.
+
+              Join us as we share our love for Calgary and help you uncover its hidden gems. Welcome to Calgary Compass, where exploration knows no bounds.
+            </Typography>
+          </Box>
         </Box>
       </Box>
+
       <Box
         display={"flex"}
         flexDirection={"row"}

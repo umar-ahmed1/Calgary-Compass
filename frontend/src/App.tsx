@@ -10,17 +10,20 @@ import RecreationData from './components/RecreationData';
 import LoggedInHomePage from './pages/LoggedInHomePage';
 
 function App() {
+
+  const user = localStorage.getItem('user');
+
+
   return (
     <BrowserRouter>
       <Routes>
         <Route element = {<Header />}>
           <Route path = '/' element = {<Home />}></Route>
           <Route path = '/test' element = {<Test/>}></Route>
-          <Route path = '/Itinerary' element={<Itinerary/>}></Route>
+          <Route path = '/Itinerary' element={!user ? <Login /> : <Itinerary/>}></Route>
         </Route>
         <Route path = '/Login' element = {<Login />}></Route>
         <Route path = '/SignUp' element = {<SignUp />}></Route>
-        <Route path='/RecreationData' element={<RecreationData />}></Route>
         <Route path='/LoggedInHomePage' element={<LoggedInHomePage />}></Route>
       </Routes>
       

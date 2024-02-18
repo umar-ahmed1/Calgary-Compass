@@ -3,9 +3,19 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import jsonData from './test.json';
 import { Box } from '@mui/material';
 
+interface Item {
+    id: string;
+    name: string;
+    description: string;
+    coordinates: number[];
+    startTime: number;
+    endTime: number;
+}
+
 type MapProps = {
-    
+    selectedItems: Item[];
 };
+
 
 const containerStyle = {
     width: '100%',
@@ -17,7 +27,7 @@ const center = {
     lng: -114.0719
 };
 
-const Map:React.FC<MapProps> = () => {
+const Map:React.FC<MapProps> = ({selectedItems}) => {
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
@@ -25,22 +35,23 @@ const Map:React.FC<MapProps> = () => {
     })
     
     const [map, setMap] = React.useState(null)
-    
     const onLoad = React.useCallback(function callback(map:any) {
         // Iterate through JSON data and add markers
-        jsonData.forEach((item, index) => {
-            const markerPosition = { lat: item.lat, lng: item.lng };
+        selectedItems.forEach((item, index) => {
+            const markerPosition = { lat: item.coordinates[1], lng: item.coordinates[0]};
             const marker = new window.google.maps.Marker({
                 position: markerPosition,
                 map: map,
                 title: `Marker ${index + 1}`, // Optional: Assign a title based on index
             });
 
+            console.log(marker)
+
             const infoWindow = new window.google.maps.InfoWindow({
                 content: `
                 <div style="max-width: 200px;">
-                    <h3 style="margin-bottom: 5px;">${"Title"}</h3>
-                    <p style="margin-bottom: 10px;">"Description: ${index}</p>
+                    <h3 style="margin-bottom: 5px;">${item.name}</h3>
+                    <p style="margin-bottom: 10px;">${item.description}</p>
                 </div>
             `
     
@@ -54,7 +65,13 @@ const Map:React.FC<MapProps> = () => {
 
         });
         setMap(map);
-    }, [jsonData])
+    }, [selectedItems])
+
+    React.useEffect(() => {
+        if (map !== null) {
+            onLoad(map);
+        }
+    }, [selectedItems, map, onLoad]);
     
     const onUnmount = React.useCallback(function callback(map:any) {
         setMap(null)
