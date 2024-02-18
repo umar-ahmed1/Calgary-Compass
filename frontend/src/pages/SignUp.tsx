@@ -31,6 +31,7 @@ const SignUp: React.FC<SignUpProps> = () => {
   const { user } = useAuthContext()
   let navigate = useNavigate();
   const [emailError, setEmailError] = useState("");
+  const [passError, setPassError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [firstNameError, setFirstNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");
@@ -43,20 +44,34 @@ const SignUp: React.FC<SignUpProps> = () => {
     const emailRegex = /^([a-zA-Z0-9-.]+)@([a-zA-Z0-9-.]+)\.([a-zA-Z]{1,5})$/;
     const isValid = emailRegex.test(email);
     if (!isValid && email != "")
-     setEmailError("Email not valid");
+      setEmailError("Email not valid");
   };
 
   React.useEffect(() => {
     if (user) {
       navigate('../')
     }
-  },[user,navigate])
+  }, [user, navigate])
 
   const checkPassword = (password: string) => {
+    setPassError("");
+    if (password === password.toLowerCase())
+      setPassError("Uppercase and Lowercase");
+
+    if (password.length < 7)
+      setPassError("At Least 7 Characters");
+
+    const passReg = /[!-@[-`{-~]/;
+    const isValid = passReg.test(password);
+    if (!isValid && password != "")
+      setPassError("Include a Symbol");
+  };
+
+  const checkConfirmPassword = (password: string) => {
     setPasswordError("");
     const passReg = /[!-@[-`{-~]/;
     if (password != signupForm.password)
-     setPasswordError("Password does not match");
+      setPasswordError("Password does not match");
   };
 
   const submitForm = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -65,14 +80,15 @@ const SignUp: React.FC<SignUpProps> = () => {
     if (!signupForm.firstName.trim())
       setFirstNameError("First name is required.");
     setLastNameError("");
-    if (!signupForm.lastName.trim()) 
+    if (!signupForm.lastName.trim())
       setLastNameError("Last name is required.");
     setSubmissionError("");
     if (
       emailError != "" ||
       passwordError != "" ||
       firstNameError != "" ||
-      lastNameError != ""
+      lastNameError != "" ||
+      passError != ""
     )
       setSubmissionError("Incorrect Submission");
     else {
@@ -93,6 +109,16 @@ const SignUp: React.FC<SignUpProps> = () => {
       justifyContent={"center"}
       alignItems={"center"}
     >
+      <Typography
+        variant="h3"
+        fontWeight="700"
+        width={"25%"}
+        textAlign={"center"}
+        color={"primaryRed"}
+        pb={"20px"}
+      >
+        Sign Up
+      </Typography>
       <FormControl sx={{ padding: 1 }}>
         <TextField
           id="email"
@@ -167,15 +193,26 @@ const SignUp: React.FC<SignUpProps> = () => {
           onChange={(event) =>
             setSignupForm((prev) => ({ ...prev, password: event.target.value }))
           }
+          onBlur={(event) => checkPassword(event.target.value)}
           label="Password"
           variant="outlined"
           type="password"
         />
+        {passError && (
+          <Typography
+            sx={{
+              color: "error.main",
+              FontSize: "90px",
+            }}
+          >
+            {passError}
+          </Typography>
+        )}
       </FormControl>
       <FormControl sx={{ padding: 1 }}>
         <TextField
           id="confirmPassword"
-          onBlur={(event) => checkPassword(event.target.value)}
+          onBlur={(event) => checkConfirmPassword(event.target.value)}
           label="Confirm Password"
           variant="outlined"
           type="Password"
@@ -191,7 +228,7 @@ const SignUp: React.FC<SignUpProps> = () => {
           </Typography>
         )}
       </FormControl>
-      <Box sx={{ display: "flex" }} justifyContent={"flex-end"}>
+      <Box sx={{ display: "flex" }} justifyContent={"flex-end"} flexDirection={"column"}>
         <Button
           onClick={(e) => submitForm(e)}
           variant="contained"

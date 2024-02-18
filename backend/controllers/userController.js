@@ -37,26 +37,31 @@ const signupUser = async (req, res) => {
 
 // Function to get a user's itineraries
 const getUserItineraries = async (req,res) => {
-  const {userId} = req.body;
+  const {userId} = req.params;
   try {
     // Find the user by their ID
-    const user = await User.findById(userId);
+    const id = new mongoose.Types.ObjectId(userId);
+    const user = await User.findById(id);
     if (!user) {
       throw new Error("User not found");
     }
     
     // Return the user's itineraries
-    res.status(200).json({ id: user._id, email, token });
+    res.status(200).json({ id: user._id});
     return user.itinerary;
   } catch (error) {
+    res.status(400).json({ error: error.message });
     throw new Error("Error fetching user itineraries: " + error.message);
   }
 };
 
 // Function to append an itinerary to user's itineraries
 const addItineraryUser = async (req,res) => {
-  const {userId,userItinerary} = req.body;
-  console.log(userId)
+  const {itineraryName,userId,userItinerary} = req.body;
+  if (itineraryName == ""){
+    return res.status(404).json({ error: "Name must not be blank" });
+  }
+  
   try {
     // Find the user by their ID
     const user = await User.findById(userId);
@@ -64,11 +69,15 @@ const addItineraryUser = async (req,res) => {
       throw new Error("User not found");
     }
     
+    // Add itineraryName to userItinerary object
+    const itineraryWithName = { ...userItinerary, itineraryName };
+
     // Append the new itinerary to the user's itineraries array
-    user.itinerary.push(userItinerary);
+    user.itinerary.push(itineraryWithName);
     await user.save();
     
     // Return the updated user object with the appended itinerary
+    res.status(200).json({ id: user._id,itineraryWithName });
     return user;
   } catch (error) {
     res.status(400).json({ error: error.message });

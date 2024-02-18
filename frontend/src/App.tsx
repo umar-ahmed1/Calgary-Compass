@@ -12,7 +12,6 @@ import MyItinerary from './pages/MyItinerary';
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 function App() {
-
   const user = localStorage.getItem('user');
 
   return (

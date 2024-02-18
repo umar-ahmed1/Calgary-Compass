@@ -46,8 +46,8 @@ export default function Header() {
             width={"50%"}
             paddingLeft={"50px"}
           >
-            <Box maxHeight={"7vh"}>
-              <img src={Logo} alt="Logo" style={{ width: "100%", height: "100%" }}  />
+            <Box maxHeight={"7vh"} sx={{'&:hover':{cursor:"pointer",opacity:0.9}}}>
+              <img src={Logo} alt="Logo" style={{ width: "100%", height: "100%" }}  onClick={() => navigate('../')}/>
             </Box>
           </Box>
 
@@ -75,8 +75,15 @@ export default function Header() {
             )}
             {user && (
               <Box paddingRight={"15px"} >
+                <Button variant="outlined" onClick={() => navigate('./myitinerary')}>
+                    <Typography color="white">View Itineraries</Typography>
+                </Button>
+              </Box>
+            )}
+            {user && (
+              <Box paddingRight={"15px"} >
                 <Button variant="outlined" onClick={() => navigate('./itinerary')}>
-                    <Typography color="white">Your Itinerary</Typography>
+                    <Typography color="white">create Itinerary</Typography>
                 </Button>
               </Box>
             )}

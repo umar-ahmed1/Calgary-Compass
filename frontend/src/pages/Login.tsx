@@ -43,7 +43,7 @@ const Login: React.FC<LoginProps> = () => {
     await login(loginForm.email, loginForm.password);
   };
 
-  
+
   return (
     <Box
       width="100%"
@@ -52,6 +52,16 @@ const Login: React.FC<LoginProps> = () => {
       justifyContent={"center"}
       alignItems={"center"}
     >
+      <Typography
+        variant="h3"
+        fontWeight="700"
+        width={"25%"}
+        textAlign={"center"}
+        color={"primaryRed"}
+        pb={"20px"}
+      >
+        Log In
+      </Typography>
       <FormControl sx={{ padding: 1 }}>
         <TextField
           id="email"
@@ -75,11 +85,11 @@ const Login: React.FC<LoginProps> = () => {
           type="password"
         />
       </FormControl>
-      <Box sx={{ display: "flex" }} justifyContent={"flex-end"}>
+      <Box sx={{ display: "flex" }} flexDirection={"column"} justifyContent={"flex-end"} pt={"20px"}>
         <Button
           onClick={(e) => submitForm(e)}
           variant="contained"
-          sx={{ width: "100%" }}
+          sx={{ width: "80%", alignSelf: "center" }}
         >
           Login
         </Button>
@@ -89,6 +99,7 @@ const Login: React.FC<LoginProps> = () => {
               color: "error.main",
               FontSize: "90px",
             }}
+            pt={"10px"}
           >
             {error}
           </Typography>
